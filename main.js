@@ -29,11 +29,11 @@ gsap.registerPlugin(ScrollTrigger);
   const positions = new Float32Array(starCount * 3);
   const colors    = new Float32Array(starCount * 3);
   const palette = [
-    new THREE.Color('#6366f1'),
-    new THREE.Color('#8b5cf6'),
-    new THREE.Color('#06b6d4'),
-    new THREE.Color('#ffffff'),
-    new THREE.Color('#c7d2fe'),
+    new THREE.Color('#16a34a'),
+    new THREE.Color('#22c55e'),
+    new THREE.Color('#10b981'),
+    new THREE.Color('#059669'),
+    new THREE.Color('#047857'),
   ];
   for (let i = 0; i < starCount; i++) {
     positions[i * 3 + 0] = (Math.random() - 0.5) * 300;
@@ -59,8 +59,8 @@ gsap.registerPlugin(ScrollTrigger);
   // ── Floating Icosahedron (Hero emblem) ──────────────────────
   const icoGeo = new THREE.IcosahedronGeometry(8, 1);
   const icoMat = new THREE.MeshPhongMaterial({
-    color: 0x6366f1,
-    emissive: 0x2d2f8f,
+    color: 0x16a34a,
+    emissive: 0x064e3b,
     wireframe: true,
     transparent: true,
     opacity: 0.55,
@@ -72,8 +72,8 @@ gsap.registerPlugin(ScrollTrigger);
   // Inner solid
   const icoInnerGeo = new THREE.IcosahedronGeometry(6, 0);
   const icoInnerMat = new THREE.MeshPhongMaterial({
-    color: 0x8b5cf6,
-    emissive: 0x1a0050,
+    color: 0x22c55e,
+    emissive: 0x065f46,
     transparent: true,
     opacity: 0.2,
   });
@@ -83,7 +83,7 @@ gsap.registerPlugin(ScrollTrigger);
 
   // Orbiting torus ring
   const torusGeo = new THREE.TorusGeometry(11, 0.15, 10, 80);
-  const torusMat = new THREE.MeshBasicMaterial({ color: 0x06b6d4, transparent: true, opacity: 0.35 });
+  const torusMat = new THREE.MeshBasicMaterial({ color: 0x10b981, transparent: true, opacity: 0.35 });
   const torus = new THREE.Mesh(torusGeo, torusMat);
   torus.position.copy(ico.position);
   torus.rotation.x = Math.PI / 3;
@@ -92,7 +92,7 @@ gsap.registerPlugin(ScrollTrigger);
   // Second torus (perpendicular)
   const torus2 = new THREE.Mesh(
     new THREE.TorusGeometry(13, 0.08, 8, 80),
-    new THREE.MeshBasicMaterial({ color: 0x6366f1, transparent: true, opacity: 0.2 })
+    new THREE.MeshBasicMaterial({ color: 0x16a34a, transparent: true, opacity: 0.2 })
   );
   torus2.position.copy(ico.position);
   torus2.rotation.x = Math.PI / 6;
@@ -100,12 +100,12 @@ gsap.registerPlugin(ScrollTrigger);
   scene.add(torus2);
 
   // ── Lights ──────────────────────────────────────────────────
-  const ambientLight = new THREE.AmbientLight(0x2a2a4a, 1.5);
+  const ambientLight = new THREE.AmbientLight(0xaaaaaa, 1.5);
   scene.add(ambientLight);
-  const light1 = new THREE.PointLight(0x6366f1, 3, 60);
+  const light1 = new THREE.PointLight(0x16a34a, 3, 60);
   light1.position.set(10, 10, 20);
   scene.add(light1);
-  const light2 = new THREE.PointLight(0x06b6d4, 2, 60);
+  const light2 = new THREE.PointLight(0x10b981, 2, 60);
   light2.position.set(-10, -10, 20);
   scene.add(light2);
 
@@ -364,21 +364,21 @@ gsap.registerPlugin(ScrollTrigger);
     // South America
     { c:[10,20], r:[18,36], color: '#10b981' },
     // Europe
-    { c:[27,40], r:[4,16], color: '#3b82f6' },
+    { c:[27,40], r:[4,16], color: '#22c55e' },
     // Africa
-    { c:[28,42], r:[16,34], color: '#f97316' },
+    { c:[28,42], r:[16,34], color: '#10b981' },
     // Asia
-    { c:[40,68], r:[3,22], color: '#8b5cf6' },
+    { c:[40,68], r:[3,22], color: '#059669' },
     // Australia
-    { c:[54,65], r:[24,34], color: '#8b5cf6' },
+    { c:[54,65], r:[24,34], color: '#059669' },
     // Greenland
     { c:[14,22], r:[1,7], color: '#10b981' },
     // Middle East
-    { c:[39,48], r:[14,22], color: '#f97316' },
+    { c:[39,48], r:[14,22], color: '#10b981' },
     // India
-    { c:[46,54], r:[16,26], color: '#8b5cf6' },
+    { c:[46,54], r:[16,26], color: '#059669' },
     // Japan / SE Asia
-    { c:[60,70], r:[14,24], color: '#8b5cf6' },
+    { c:[60,70], r:[14,24], color: '#059669' },
   ];
 
   // Build a color map for each dot position
@@ -438,7 +438,7 @@ gsap.registerPlugin(ScrollTrigger);
       { c: 40, r: 20 }, // Middle East
       { c: 58, r: 29 }, // Australia
     ];
-    ctx.strokeStyle = 'rgba(99,102,241,0.3)';
+    ctx.strokeStyle = 'rgba(22,163,74,0.3)';
     ctx.lineWidth = 0.8;
     for (let i = 0; i < hubs.length - 1; i++) {
       const a = hubs[i];
