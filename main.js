@@ -56,48 +56,88 @@ gsap.registerPlugin(ScrollTrigger);
   const stars = new THREE.Points(starGeo, starMat);
   scene.add(stars);
 
-  // ── Floating Icosahedron (Hero emblem) ──────────────────────
-  const icoGeo = new THREE.IcosahedronGeometry(8, 1);
-  const icoMat = new THREE.MeshPhongMaterial({
-    color: 0x16a34a,
-    emissive: 0x064e3b,
-    wireframe: true,
+  // ── 3D Vanilla Flower (Hero emblem) ──────────────────────
+  const flowerGroup = new THREE.Group();
+
+  // Material for petals (creamy vanilla white)
+  const petalMat = new THREE.MeshPhongMaterial({
+    color: 0xfffdd0,
+    emissive: 0x047857,
+    emissiveIntensity: 0.15,
     transparent: true,
-    opacity: 0.55,
+    opacity: 0.9,
+    side: THREE.DoubleSide,
+    shininess: 80
   });
-  const ico = new THREE.Mesh(icoGeo, icoMat);
-  ico.position.set(18, 0, -10);
-  scene.add(ico);
 
-  // Inner solid
-  const icoInnerGeo = new THREE.IcosahedronGeometry(6, 0);
-  const icoInnerMat = new THREE.MeshPhongMaterial({
-    color: 0x22c55e,
-    emissive: 0x065f46,
+  // Material for the central trumpet (lip) - yellowish green
+  const lipMat = new THREE.MeshPhongMaterial({
+    color: 0xfffee0,
+    emissive: 0x059669,
+    emissiveIntensity: 0.25,
     transparent: true,
-    opacity: 0.2,
+    opacity: 0.95,
+    side: THREE.DoubleSide,
+    shininess: 60
   });
-  const icoInner = new THREE.Mesh(icoInnerGeo, icoInnerMat);
-  icoInner.position.copy(ico.position);
-  scene.add(icoInner);
 
-  // Orbiting torus ring
-  const torusGeo = new THREE.TorusGeometry(11, 0.15, 10, 80);
-  const torusMat = new THREE.MeshBasicMaterial({ color: 0x10b981, transparent: true, opacity: 0.35 });
-  const torus = new THREE.Mesh(torusGeo, torusMat);
-  torus.position.copy(ico.position);
-  torus.rotation.x = Math.PI / 3;
-  scene.add(torus);
+  // Base geometry for a petal
+  const petalGeo = new THREE.SphereGeometry(2, 32, 16);
+  
+  // Create 5 outer petals (orchid/vanilla style)
+  for (let i = 0; i < 5; i++) {
+    const petal = new THREE.Mesh(petalGeo, petalMat);
+    // Squash into a thin, elongated petal
+    petal.scale.set(1, 4.5, 0.15);
+    
+    // Position radially
+    const angle = (i / 5) * Math.PI * 2 + Math.PI/2;
+    const radius = 3.0; // pushing out from center
+    
+    petal.position.x = Math.cos(angle) * radius;
+    petal.position.y = Math.sin(angle) * radius;
+    
+    // Rotate to face outward along the rim
+    petal.rotation.z = angle - Math.PI / 2;
+    // Flare backwards slightly
+    petal.rotation.x = Math.cos(angle) * -0.6;
+    petal.rotation.y = Math.sin(angle) * -0.6;
+    
+    flowerGroup.add(petal);
+  }
 
-  // Second torus (perpendicular)
-  const torus2 = new THREE.Mesh(
-    new THREE.TorusGeometry(13, 0.08, 8, 80),
-    new THREE.MeshBasicMaterial({ color: 0x16a34a, transparent: true, opacity: 0.2 })
-  );
-  torus2.position.copy(ico.position);
-  torus2.rotation.x = Math.PI / 6;
-  torus2.rotation.z = Math.PI / 4;
-  scene.add(torus2);
+  // The central lip/trumpet (distinctive to vanilla orchids)
+  // An open cylinder that flares
+  const lipGeo = new THREE.CylinderGeometry(2.5, 0.8, 5, 32, 1, true);
+  const lip = new THREE.Mesh(lipGeo, lipMat);
+  lip.rotation.x = Math.PI / 2; // face forward towards the camera
+  lip.position.z = 1.5;
+  flowerGroup.add(lip);
+
+  // Stamen in the center
+  const stamenGeo = new THREE.CylinderGeometry(0.15, 0.15, 5.5, 8);
+  const stamenMat = new THREE.MeshPhongMaterial({ color: 0x10b981, emissive: 0x047857 });
+  const stamen = new THREE.Mesh(stamenGeo, stamenMat);
+  stamen.rotation.x = Math.PI / 2;
+  stamen.position.z = 2.5;
+  flowerGroup.add(stamen);
+
+  // Decorative floating spores around the flower
+  const sporeGeo = new THREE.SphereGeometry(0.4, 16, 16);
+  const sporeMat = new THREE.MeshPhongMaterial({ color: 0x22c55e, emissive: 0x16a34a });
+  const spores = [];
+  for (let i=0; i<4; i++) {
+    const spore = new THREE.Mesh(sporeGeo, sporeMat);
+    flowerGroup.add(spore);
+    spores.push({ mesh: spore, angle: i * (Math.PI*2/4), speed: 0.015 + Math.random()*0.015, radius: 8 + Math.random()*3 });
+  }
+
+  // Tilt the entire flower slightly so it looks dynamic
+  flowerGroup.rotation.y = -Math.PI / 8;
+  flowerGroup.rotation.x = Math.PI / 12;
+
+  flowerGroup.position.set(18, 0, -10);
+  scene.add(flowerGroup);
 
   // ── Lights ──────────────────────────────────────────────────
   const ambientLight = new THREE.AmbientLight(0xaaaaaa, 1.5);
@@ -130,25 +170,22 @@ gsap.registerPlugin(ScrollTrigger);
     stars.rotation.y = t * 0.012;
     stars.rotation.x = t * 0.005;
 
-    // Icosahedron rotation
-    ico.rotation.x = t * 0.22;
-    ico.rotation.y = t * 0.35;
-    icoInner.rotation.x = -t * 0.18;
-    icoInner.rotation.y = -t * 0.28;
+    // Flower gentle sway and slow rotation
+    flowerGroup.rotation.y = -Math.PI / 8 + Math.sin(t * 0.5) * 0.15;
+    flowerGroup.rotation.x = Math.PI / 12 + Math.cos(t * 0.4) * 0.1;
+    flowerGroup.rotation.z = Math.sin(t * 0.3) * 0.05;
 
-    // Torus rings orbit
-    torus.rotation.z  = t * 0.3;
-    torus2.rotation.y = t * 0.18;
+    // Orbit spores
+    spores.forEach(sp => {
+      sp.angle += sp.speed;
+      sp.mesh.position.x = Math.cos(sp.angle) * sp.radius;
+      sp.mesh.position.y = Math.sin(sp.angle) * sp.radius + Math.sin(t * 2 + sp.angle) * 1.5;
+      sp.mesh.position.z = Math.sin(sp.angle * 1.5) * sp.radius;
+    });
 
-    // Mouse parallax on group
-    ico.position.x      = 18 + mouse.x * 2;
-    ico.position.y      =  0 - mouse.y * 2;
-    icoInner.position.x = ico.position.x;
-    icoInner.position.y = ico.position.y;
-    torus.position.x    = ico.position.x;
-    torus.position.y    = ico.position.y;
-    torus2.position.x   = ico.position.x;
-    torus2.position.y   = ico.position.y;
+    // Mouse parallax on flower group
+    flowerGroup.position.x = 18 + mouse.x * 2;
+    flowerGroup.position.y = 0 - mouse.y * 2;
 
     // Camera drift from scroll
     camera.position.y = -scrollY * 0.012;
