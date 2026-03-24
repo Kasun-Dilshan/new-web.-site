@@ -448,3 +448,34 @@ gsap.registerPlugin(ScrollTrigger);
     });
   });
 })();
+
+/* ============================================================
+   10. CARD NAVIGATION WITH LOADING SCREEN
+   ============================================================ */
+(function initCompanyCardNavigation() {
+  const card = document.querySelector('.company-card[data-link]');
+  const loader = document.getElementById('page-loader');
+  if (!card) return;
+
+  const goToDetails = () => {
+    const targetUrl = card.getAttribute('data-link');
+    if (!targetUrl) return;
+
+    if (loader) {
+      loader.classList.add('show');
+      loader.setAttribute('aria-hidden', 'false');
+    }
+
+    setTimeout(() => {
+      window.location.href = targetUrl;
+    }, 700);
+  };
+
+  card.addEventListener('click', goToDetails);
+  card.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      goToDetails();
+    }
+  });
+})();
