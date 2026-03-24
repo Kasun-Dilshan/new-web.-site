@@ -538,58 +538,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .cnav-dot.active { background: var(--accent-1); width: 24px; border-radius: 4px; }
 
 /* ============================================================
-   SERVICES
-   ============================================================ */
-#services {
-  position: relative;
-  z-index: 1;
-  padding: 8rem 0;
-  background: linear-gradient(180deg, transparent 0%, var(--bg-2) 30%, var(--bg-2) 70%, transparent 100%);
-}
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-.service-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 2rem;
-  backdrop-filter: blur(10px);
-  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
-  transition-delay: var(--delay, 0s);
-  position: relative;
-  overflow: hidden;
-}
-.service-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--grad-a);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
-}
-.service-card:hover { transform: translateY(-8px); border-color: rgba(22,163,74,0.3); box-shadow: var(--shadow-glow); }
-.service-card:hover::after { transform: scaleX(1); }
-.service-icon {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
-  display: block;
-  transition: transform 0.4s;
-}
-.service-card:hover .service-icon { transform: scale(1.2) rotate(8deg); }
-.service-card h4 {
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin-bottom: 0.6rem;
-}
-.service-card p { font-size: 0.9rem; color: var(--text-2); line-height: 1.65; }
-
-/* ============================================================
    GLOBAL PRESENCE
    ============================================================ */
 #presence {
