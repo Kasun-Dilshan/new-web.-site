@@ -1,0 +1,11 @@
+# Task: Verify 3D Scrolling Website
+
+## Checklist
+- [ ] Open index.html and resize window to 1440x900
+- [ ] Wait 3 seconds for Three.js and GSAP to initialize
+- [ ] Take screenshot of Hero section (top)
+- [ ] Scroll to "About" and take screenshot
+- [ ] Scroll to "Our Companies" and take screenshot
+- [ ] Scroll to "Services" and take screenshot
+- [ ] Scroll to Footer and take screenshot
+- [ ] Report findings and rendering issues

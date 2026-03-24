@@ -1,0 +1,23 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (128,50)<a class='nav-logo' href='#hero' />
+	[1] (78,50)<span >⬡ />
+	[2] (138,50)<span >NEXUS />
+		[3] (161,50)<strong >GROUP />
+[4] (629,50)<a href='#about'>About />
+[5] (693,50)<a href='#companies'>Companies />
+[6] (762,50)<a href='#services'>Services />
+[7] (820,50)<a href='#presence'>Global />
+[8] (889,50)<a class='nav-cta' href='#contact'>Contact Us />
+Building
+Tomorrow's
+World
+Six industry-defining subsidiaries. One unified vision.
+Nexus Group operates across 60+ countries, shaping the future at every scale.
+[9] (130,632)<a class='btn-primary' href='#companies'>Explore Our Companies />
+[10] (278,632)<a class='btn-ghost' href='#about'>Learn More ↓ />
+Scroll to explore
+
+</current_dom>

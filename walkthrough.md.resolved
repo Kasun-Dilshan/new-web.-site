@@ -1,0 +1,63 @@
+# Nexus Group — 3D Scrolling Website: Walkthrough
+
+## Files Created
+
+| File | Location |
+|---|---|
+| [index.html](file:///Users/erangasenadeera/.gemini/antigravity/scratch/nexus-group/index.html) | [/Users/erangasenadeera/.gemini/antigravity/scratch/nexus-group/index.html](file:///Users/erangasenadeera/.gemini/antigravity/scratch/nexus-group/index.html) |
+| [index.css](file:///Users/erangasenadeera/.gemini/antigravity/scratch/nexus-group/index.css)  | [/Users/erangasenadeera/.gemini/antigravity/scratch/nexus-group/index.css](file:///Users/erangasenadeera/.gemini/antigravity/scratch/nexus-group/index.css)  |
+| [main.js](file:///Users/erangasenadeera/.gemini/antigravity/scratch/nexus-group/main.js)    | [/Users/erangasenadeera/.gemini/antigravity/scratch/nexus-group/main.js](file:///Users/erangasenadeera/.gemini/antigravity/scratch/nexus-group/main.js)    |
+
+Open the site: [index.html](file:///Users/erangasenadeera/.gemini/antigravity/scratch/nexus-group/index.html)
+
+---
+
+## Screenshots
+
+````carousel
+![Hero — Three.js rotating icosahedron + starfield background](/Users/erangasenadeera/.gemini/antigravity/brain/aeace893-e699-4a70-a732-96bfecd8be55/hero_section_1774343003623.png)
+<!-- slide -->
+![About — Stats counter cards (60+ Countries, 280K Employees, 6 Subsidiaries, $94B Revenue)](/Users/erangasenadeera/.gemini/antigravity/brain/aeace893-e699-4a70-a732-96bfecd8be55/about_section_1774343021981.png)
+<!-- slide -->
+![Companies — Glassmorphism card carousel (Nexus Capital, Health, Build, Media)](/Users/erangasenadeera/.gemini/antigravity/brain/aeace893-e699-4a70-a732-96bfecd8be55/companies_section_1774343068249.png)
+<!-- slide -->
+![Services — 6-card grid with gradient bottom border hover animations](/Users/erangasenadeera/.gemini/antigravity/brain/aeace893-e699-4a70-a732-96bfecd8be55/services_section_1774343108993.png)
+<!-- slide -->
+![Footer — Logo, all 6 company links, company info links, social icons, copyright](/Users/erangasenadeera/.gemini/antigravity/brain/aeace893-e699-4a70-a732-96bfecd8be55/footer_section_1774343153156.png)
+````
+
+## Recording
+
+![Full browser session recording](/Users/erangasenadeera/.gemini/antigravity/brain/aeace893-e699-4a70-a732-96bfecd8be55/nexus_group_website_verification_1774342965861.webp)
+
+---
+
+## What Was Built
+
+### 🎨 Design System
+- Deep navy/black dark theme with **indigo–violet–cyan** gradient palette
+- `Outfit` + `Space Grotesk` Google Fonts
+- Glassmorphism cards with blur + translucent borders
+
+### 🌌 Three.js Scene (Hero)
+- **2,800 colored star particles** slowly rotating in 3D space
+- **Rotating wireframe icosahedron** with two orbiting torus rings
+- Camera reacts to **mouse parallax** and **scroll offset**
+
+### 📜 GSAP ScrollTrigger Animations
+- `reveal-up`, `reveal-left`, `reveal-right` — staggered on every section
+- Stat card counters animate to target number on scroll into view
+- Active nav link highlight updates on scroll position
+
+### 🏢 Six Companies Carousel
+- Touch drag + button navigation + auto-play (every 4s)
+- Each card has a per-mouse-position **3D tilt** effect
+- Colored glow blobs unique to each company
+
+### 🗺️ World Map Canvas
+- Animated dot grid representing continents with pulsing highlights
+- Bezier arc connection lines between global HQ hubs
+- Region color-coded by geography
+
+### ✅ Verified
+All sections rendered correctly with no console errors.
