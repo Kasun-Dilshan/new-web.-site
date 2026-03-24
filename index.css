@@ -274,7 +274,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .hero-logo-wrapper {
   position: absolute;
-  right: -5%;
+  right: 1%;
   top: 50%;
   transform: translateY(-50%);
   width: 45vw;
