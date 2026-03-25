@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Investment Plans</title>
+  <style>
+    :root{
+      --bg:#F8FBF3;
+      --text:#263037;
+      --muted:#596A5A;
+      --primary:#354E33;
+      --accent:#40B54C;
+      --card:#ffffff;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+    a{color:inherit;text-decoration:none}
+    :focus-visible{outline:3px solid rgba(64,181,76,.45);outline-offset:3px;border-radius:10px}
+    .container{max-width:1100px;margin:0 auto;padding:24px 16px}
+
+    .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+    .title h1{margin:0;font-size:28px;letter-spacing:.6px;text-transform:uppercase;color:var(--primary)}
+    .title p{margin:6px 0 0;color:var(--muted);font-weight:600}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      border:1px solid rgba(53,78,51,.35);background:#fff;color:var(--primary);
+      padding:10px 14px;border-radius:999px;font-weight:800;font-size:12px;text-transform:uppercase;
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .btn:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(0,0,0,.10)}
+    .btn.primary{background:var(--primary);color:#fff;border-color:transparent}
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap:14px;
+      margin-top:14px;
+    }
+    .card{
+      background:var(--card);
+      border-radius:22px;
+      box-shadow:var(--shadow);
+      padding:18px;
+      border:1px solid rgba(53,78,51,.10);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      min-height: 160px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(53,78,51,.08);
+      color:var(--primary);
+      font-weight:900;
+      font-size:12px;
+      letter-spacing:.6px;
+      text-transform:uppercase;
+      width:fit-content;
+    }
+    .card h2{margin:0;font-size:18px;color:var(--primary);letter-spacing:.2px}
+    .card p{margin:0;color:var(--muted);line-height:1.55;font-weight:600;font-size:13px}
+    .card .actions{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap}
+
+    @media (max-width: 980px){
+      .grid{grid-template-columns: repeat(2, minmax(0, 1fr))}
+    }
+    @media (max-width: 560px){
+      .grid{grid-template-columns: 1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top">
+      <div class="title">
+        <h1>Investment Plans</h1>
+        <p>Select a plan to view premiums / income details.</p>
+      </div>
+      <div class="nav">
+        <a class="btn" href="plantation.html">Back to Plantation</a>
+        <a class="btn primary" href="index.html">Group Home</a>
+      </div>
+    </div>
+
+    <div class="grid">
+      <a class="card" href="investment-fixed-income.html" aria-label="Open Investment Fixed Income">
+        <span class="badge">Calculator</span>
+        <h2>Investment Plans (Monthly Income)</h2>
+        <p>Select amount and term to see the monthly fixed income.</p>
+        <div class="actions"><span class="btn">Open</span></div>
+      </a>
+
+      <a class="card" href="green-saving-plans.html" aria-label="Open Green Saving Plans">
+        <span class="badge">Plan</span>
+        <h2>Green Saving Plans</h2>
+        <p>Premium selector with maturity and term details.</p>
+        <div class="actions"><span class="btn">Open</span></div>
+      </a>
+
+      <a class="card" href="green-silver-saving-plan.html" aria-label="Open Green Silver Saving Plan">
+        <span class="badge">Plan</span>
+        <h2>Green Silver Saving Plan</h2>
+        <p>Premium selector for Plan 01–03 with full breakdown.</p>
+        <div class="actions"><span class="btn">Open</span></div>
+      </a>
+
+      <a class="card" href="gold-saving-plan.html" aria-label="Open Gold Saving Plan">
+        <span class="badge">Plan</span>
+        <h2>Gold Saving Plan</h2>
+        <p>Single plan premium selector with detailed table.</p>
+        <div class="actions"><span class="btn">Open</span></div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

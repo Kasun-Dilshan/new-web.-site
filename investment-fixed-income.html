@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Investment Plans – Monthly Income</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root{
+  --primary:#10b981;
+  --secondary:#047857;
+}
+
+*{
+  box-sizing:border-box;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto;
+}
+
+body{
+  margin:0;
+  background:#ffffff;
+  padding:16px;
+}
+
+.top-nav{
+  max-width:520px;
+  margin:0 auto 12px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.top-nav a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid #e5e7eb;
+  text-decoration:none;
+  color:#111827;
+  font-weight:800;
+  font-size:13px;
+  background:#fff;
+}
+.top-nav a.primary{
+  background:var(--secondary);
+  color:#fff;
+  border-color:transparent;
+}
+
+/* CONTAINER */
+.container{
+  max-width:480px;       /* 📱 Mobile width */
+  margin:auto;
+}
+
+/* CARD */
+.card{
+  background:#ffffff;
+  border-radius:22px;
+  padding:22px;
+  box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+/* HEADER */
+.logo{
+  text-align:center;
+  margin-bottom:18px;
+}
+
+.logo i{
+  font-size:42px;
+  color:var(--primary);
+}
+
+.logo h1{
+  font-size:26px;
+  color:var(--secondary);
+  margin:8px 0 4px;
+  font-weight:800;
+}
+
+.subtitle{
+  font-size:14px;
+  color:#6b7280;
+}
+
+/* INPUTS */
+.input-group{
+  margin-top:18px;
+}
+
+label{
+  font-size:15px;
+  font-weight:700;
+  color:#374151;
+  display:block;
+  margin-bottom:6px;
+}
+
+/* 🔥 TOUCH-FRIENDLY SELECT */
+select{
+  width:100%;
+  height:54px;
+  padding:0 14px;
+  border-radius:12px;
+  border:2px solid #e5e7eb;
+  font-size:16px;
+  font-weight:600;
+  background:#fff;
+  outline:none;
+
+  appearance:none;
+
+  background-image:url("data:image/svg+xml;utf8,<svg fill='%23111827' height='18' viewBox='0 0 24 24' width='18'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat:no-repeat;
+  background-position:right 14px center;
+}
+
+select:focus{
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(16,185,129,.2);
+}
+
+/* RESULT */
+.result{
+  margin-top:22px;
+  display:none;
+  text-align:center;
+}
+
+/* INCOME CARD */
+.income-card{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:white;
+  border-radius:18px;
+  padding:26px 14px;
+  box-shadow:0 10px 25px rgba(16,185,129,.35);
+}
+
+.income-label{
+  font-size:14px;
+  opacity:.9;
+}
+
+.income-value{
+  font-size:34px;
+  font-weight:900;
+  margin:8px 0;
+  text-shadow:0 2px 6px rgba(0,0,0,.25);
+  animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.05)}
+  100%{transform:scale(1)}
+}
+
+.info{
+  margin-top:12px;
+  background:#ecfdf5;
+  padding:12px;
+  border-radius:10px;
+  font-size:13px;
+  border-left:4px solid var(--primary);
+}
+
+/* 📺 DESKTOP UPGRADE */
+@media(min-width:768px){
+  body{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    background:#f9fafb;
+  }
+
+  .container{
+    max-width:520px;
+  }
+
+  .card{
+    padding:32px;
+    box-shadow:0 20px 45px rgba(0,0,0,.12);
+  }
+
+  .logo h1{font-size:32px}
+  .income-value{font-size:44px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-nav">
+  <a href="investments.html">← Investment Plans</a>
+  <a class="primary" href="plantation.html">Plantation Home</a>
+</div>
+
+<div class="container">
+<div class="card">
+
+<div class="logo">
+<i class="fas fa-leaf"></i>
+<h1>Investment Plans</h1>
+<div class="subtitle">Select amount and term</div>
+</div>
+
+<!-- AMOUNT -->
+<div class="input-group">
+<label>Investment Amount (LKR)</label>
+<select id="amount">
+<option value="">Select Amount</option>
+<option value="100000">LKR 100,000</option>
+<option value="200000">LKR 200,000</option>
+<option value="500000">LKR 500,000</option>
+<option value="1000000">LKR 1,000,000</option>
+<option value="5000000">LKR 5,000,000</option>
+<option value="10000000">LKR 10,000,000</option>
+<option value="50000000">LKR 50,000,000+</option>
+</select>
+</div>
+
+<!-- TERM -->
+<div class="input-group">
+<label>Investment Term</label>
+<select id="term">
+<option value="">Select Term</option>
+<option value="1">1 Year</option>
+<option value="2">2 Years</option>
+<option value="3">3 Years</option>
+<option value="4">4 Years</option>
+<option value="5">5 Years</option>
+<option value="6">6 Years</option>
+<option value="7">7 Years</option>
+<option value="8">8 Years</option>
+</select>
+</div>
+
+<!-- RESULT -->
+<div class="result" id="result">
+
+<div class="income-card">
+<div class="income-label">Monthly Fixed Income</div>
+<div class="income-value" id="monthly">LKR 0</div>
+</div>
+
+<div class="info">
+Special: ≥ LKR 50,000,000 for 8 years receive enhanced income.
+</div>
+
+</div>
+
+</div>
+</div>
+
+<script>
+// Base income per 100,000
+const baseIncome={
+  1:2500,2:3000,3:3250,4:3500,
+  5:4000,6:4250,7:4500,8:4750
+};
+
+const amountEl=document.getElementById("amount");
+const termEl=document.getElementById("term");
+const result=document.getElementById("result");
+const monthlyEl=document.getElementById("monthly");
+
+function animateValue(start,end,duration){
+  let startTime=null;
+  function step(timestamp){
+    if(!startTime) startTime=timestamp;
+    const progress=Math.min((timestamp-startTime)/duration,1);
+    const value=start+(end-start)*progress;
+    monthlyEl.textContent="LKR "+value.toLocaleString(undefined,{minimumFractionDigits:2});
+    if(progress<1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+function calculate(){
+  const amount=Number(amountEl.value);
+  const term=Number(termEl.value);
+
+  if(!amount || !term){
+    result.style.display="none";
+    return;
+  }
+
+  let monthly;
+
+  if(amount>=50000000 && term===8){
+    monthly=amount*0.05;
+  }else{
+    monthly=(amount/100000)*baseIncome[term];
+  }
+
+  result.style.display="block";
+  animateValue(0,monthly,700);
+}
+
+amountEl.addEventListener("change",calculate);
+termEl.addEventListener("change",calculate);
+</script>
+
+</body>
+</html>
