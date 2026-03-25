@@ -233,6 +233,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: relative;
   z-index: 1;
   min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   padding: 0 2rem;
@@ -1081,6 +1083,7 @@ footer {
   }
 }
 @media (max-width: 768px) {
+  html { scroll-behavior: auto; }
   #hero {
     min-height: auto;
     padding: calc(var(--nav-h) + 1.5rem) 1rem 4rem;

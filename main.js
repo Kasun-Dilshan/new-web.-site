@@ -7,6 +7,8 @@
 
 // ─── GSAP ScrollTrigger Registration ────────────────────────
 gsap.registerPlugin(ScrollTrigger);
+// Prevent mobile URL-bar resize from causing scroll "jumps"
+ScrollTrigger.config({ ignoreMobileResize: true });
 
 /* ============================================================
    1. THREE.JS — Particle Starfield + Floating Hero Mesh
