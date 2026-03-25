@@ -5,36 +5,347 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Plantation Home – SerendibGroups</title>
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
+    :root{
+      --bg:#F8FBF3;
+      --text:#263037;
+      --muted:#596A5A;
+      --primary:#354E33;
+      --secondary:#798D7A;
+      --accent:#40B54C;
+      --card:#ffffff;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --radius: 18px;
     }
-    .frame {
-      border: 0;
-      width: 100%;
-      height: 100%;
-      display: block;
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1200px;margin:0 auto;padding:0 16px}
+
+    /* Top bar */
+    .topbar{background:var(--accent);color:#fff;font-size:14px}
+    .topbar .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0;flex-wrap:wrap}
+    .topbar .items{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+    .topbar .item{display:flex;gap:8px;align-items:center;white-space:nowrap;opacity:.95}
+    .topbar .social{display:flex;gap:10px;align-items:center}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.18)}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:20;background:rgba(248,251,243,.92);backdrop-filter: blur(10px);border-bottom:1px solid rgba(53,78,51,.12)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:46px;width:auto}
+    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+    nav a{font-size:14px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;padding:10px 8px;border-radius:10px}
+    nav a:hover{background:rgba(53,78,51,.08)}
+    .cta{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid rgba(53,78,51,.35);background:#fff;color:var(--primary);padding:10px 14px;border-radius:999px;font-weight:700;font-size:13px;text-transform:uppercase}
+    .btn.primary{background:var(--primary);color:#fff;border-color:transparent}
+    .btn.accent{background:var(--accent);color:#fff;border-color:transparent}
+
+    /* Hero */
+    .hero{
+      min-height: 62vh;
+      display:flex;
+      align-items:flex-end;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.30) 55%, rgba(248,251,243,1) 100%),
+        url("https://serendibgroups.com/wp-content/uploads/2024/11/slider_1.jpg") center/cover no-repeat;
+      padding: 70px 0 26px;
     }
-    .fallback {
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      padding: 16px;
+    .hero .inner{padding: 0 0 18px}
+    .hero .kicker{display:inline-flex;align-items:center;gap:10px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:12px}
+    .hero h1{margin:14px 0 6px;color:#fff;font-size:56px;line-height:1.05;letter-spacing:6px;text-transform:uppercase}
+    .hero h2{margin:0;color:#fff;font-size:28px;letter-spacing:6px;text-transform:uppercase;font-weight:700;opacity:.95}
+    .hero .actions{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+
+    /* Sections */
+    section{padding:52px 0}
+    .grid-2{display:grid;grid-template-columns: 1.1fr .9fr;gap:26px;align-items:center}
+    .grid-2.reverse{grid-template-columns: .9fr 1.1fr}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;padding:7px 12px;border-radius:999px;background:rgba(53,78,51,.10);color:var(--primary);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.8px}
+    .title{margin:12px 0 10px;font-size:40px;line-height:1.08;text-transform:uppercase;color:var(--primary)}
+    .title .hl{color:var(--accent)}
+    p{color:var(--muted);line-height:1.75;margin:0 0 12px}
+    .media{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);position:relative}
+    .media img{width:100%;height:auto;display:block}
+    .media .badge-img{position:absolute;right:14px;top:14px;width:118px;aspect-ratio:1/1;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.22)}
+
+    /* Marquee */
+    .marquee{padding:0;background:transparent}
+    .marquee .bar{background:rgba(53,78,51,.08);border-top:1px solid rgba(53,78,51,.10);border-bottom:1px solid rgba(53,78,51,.10);overflow:hidden}
+    .marquee .track{display:flex;gap:22px;white-space:nowrap;animation: scroll 18s linear infinite;padding:14px 0}
+    .marquee .chip{font-weight:900;text-transform:uppercase;letter-spacing:2px;color:var(--primary);font-size:20px}
+    @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* Projects */
+    .projects{padding-top:20px}
+    .project{
+      border-radius: 28px;
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      margin: 18px 0;
+      background:#111;
+      color:#fff;
+      position:relative;
+    }
+    .project::before{
+      content:"";
+      position:absolute;inset:0;
+      background: linear-gradient(90deg, rgba(0,0,0,.70), rgba(0,0,0,.25));
+      z-index:1;
+    }
+    .project .bg{position:absolute;inset:0;background:center/cover no-repeat;filter:saturate(1.02);transform:scale(1.02)}
+    .project .content{position:relative;z-index:2;display:grid;grid-template-columns: 1fr 1fr;gap:18px;align-items:center;padding:42px 26px}
+    .project h3{margin:0;font-size:44px;line-height:1.05}
+    .project p{color:rgba(255,255,255,.82);margin:0}
+
+    /* Footer */
+    footer{padding:40px 0 20px;background:var(--accent);color:#fff;margin-top:30px}
+    .footer-grid{display:grid;grid-template-columns: 1.15fr .85fr 1fr;gap:18px;align-items:start}
+    .footer-grid p{color:rgba(255,255,255,.9)}
+    .footer-links{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+    .map{border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+    .copy{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.25);font-weight:600;font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+    @media (max-width: 980px){
+      .grid-2,.grid-2.reverse{grid-template-columns:1fr}
+      .hero h1{font-size:42px;letter-spacing:5px}
+      .hero h2{font-size:22px;letter-spacing:4px}
+      .project .content{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
-  <iframe
-    class="frame"
-    src="https://serendibgroups.com/home-1/"
-    title="SerendibGroups - Plantation Home"
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"
-  ></iframe>
-
-  <noscript>
-    <div class="fallback">
-      JavaScript is disabled. Open this page directly:
-      <a href="https://serendibgroups.com/home-1/">Plantation Home – SerendibGroups</a>
+  <!-- Top Bar (content taken from provided source) -->
+  <div class="topbar">
+    <div class="container">
+      <div class="row">
+        <div class="items">
+          <div class="item pill">
+            <span>Phone</span>
+            <strong>+94 74 41 10 417</strong>
+          </div>
+          <div class="item pill">
+            <span>Email</span>
+            <strong>info@serendibgroups.com</strong>
+          </div>
+        </div>
+        <div class="social">
+          <a class="pill" href="https://web.facebook.com/profile.php?id=100063968831924&_rdc=1&_rdr#" target="_blank" rel="noreferrer">Facebook</a>
+          <a class="pill" href="#" aria-label="X">X</a>
+          <a class="pill" href="#" aria-label="Instagram">Instagram</a>
+        </div>
+      </div>
     </div>
-  </noscript>
+  </div>
+
+  <!-- Header / Menu (content taken from provided source) -->
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="brand">
+          <a href="https://serendibgroups.com/home-1/" aria-label="SerendibGroups home">
+            <img src="https://serendibgroups.com/wp-content/uploads/2024/10/serendiblogo.png" alt="SerendibGroups" />
+          </a>
+        </div>
+        <nav aria-label="Primary navigation">
+          <ul>
+            <li><a href="https://serendibgroups.com/home-1/" aria-current="page">Home</a></li>
+            <li><a href="https://serendibgroups.com/about-us-2/">About Us</a></li>
+            <li><a href="https://serendibgroups.com/investment-plan/">Investment Plans</a></li>
+            <li><a href="https://serendibgroups.com/carriers/">Carriers</a></li>
+            <li><a href="https://serendibgroups.com/contact/">Contact</a></li>
+            <li><a href="https://serendibgroups.com/news-feed/">News Feed</a></li>
+            <li><a href="https://serendibgroups.com/login/">Login</a></li>
+          </ul>
+        </nav>
+        <div class="cta">
+          <a class="btn accent" href="https://serendibgroups.com/property-template/">Conference Room Reservation</a>
+          <a class="btn" href="http://serendibgroups.com/travel-home/">Travel &amp; Tours</a>
+          <a class="btn primary" href="https://serendibgroups.com/home-1/">Plantation</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero (content taken from provided source) -->
+  <section class="hero">
+    <div class="container">
+      <div class="inner">
+        <div class="kicker">Welcome to</div>
+        <h1>Serendib</h1>
+        <h2>Group of companies</h2>
+        <div class="actions">
+          <a class="btn primary" href="https://serendibgroups.com/about-us-2/">About us</a>
+          <a class="btn" href="https://serendibgroups.com/investment-plan/">Investment Plan</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who We Are -->
+  <section>
+    <div class="container">
+      <div class="grid-2">
+        <div class="media">
+          <img src="https://serendibgroups.com/wp-content/uploads/2025/04/2-1-606x403.png" alt="Plantation image" />
+          <div class="badge-img">
+            <img src="https://serendibgroups.com/wp-content/uploads/2024/11/3-1-337x337.png" alt="Badge image" />
+          </div>
+        </div>
+        <div class="card">
+          <div class="eyebrow">Who We Are</div>
+          <div class="title">SERENDIB <span class="hl">GREEN PLANTATION</span></div>
+          <p>As a premier entity within the prestigious Serendib Group, Serendib Green Plantation is at the forefront of sustainable cultivation and green plantation practices. Our deep-rooted commitment to environmental stewardship and innovative agricultural techniques enable us to transform land into flourishing, eco-friendly plantations. Our focus on sustainability not only enhances the health of our planet but also delivers superior-quality products and services to our clients.</p>
+          <p>Rooted in the heart of Sri Lanka’s agricultural heritage, we are a pioneer in sustainable agriculture and plantations, specialising in the production of gherkins, bananas, watermelons, and bird chilli. This integrated approach positions us as a leader in plantation excellence, serving as a testament to our dedication to a greener future.</p>
+          <p>Welcome to our digital space, and feel free to browse with a smile!</p>
+          <a class="btn primary" href="https://serendibgroups.com/about-us-2/">About us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company Overview -->
+  <section>
+    <div class="container">
+      <div class="grid-2 reverse">
+        <div class="card">
+          <div class="title">Company Overview</div>
+          <p>The area is used by Serendib Green Plantation, one of the leading regional plantation enterprises, to cultivate and produce gherkins, bananas, watermelons, and bird chilli. After our company was privatised in 2024, we proceeded to change it from a commodity-based enterprise to a more profitable, broad, and long-lasting company.</p>
+          <p>With a forward-thinking approach, we have dabbled in developing a varied company portfolio that includes speciality vanilla, sustainable development, and non-traditional crops, among other things. As a result, we are a safe company organisation that makes investments and gains strategically for both short-term and long-term growth. By adopting the Triple Bottom Line method as our main value proposition advancement, we became a leader in generating sustainable value that benefits all of our partners. We give equal and exact attention to all customers, including investors and the local population around the plantations. As a result, we concentrate on creating a brighter future for all Sri Lankans. With a strong and ambitious emphasis on establishing a world-class company and showcasing Sri Lanka’s greatest qualities to the global marketplace, we care and deliver.</p>
+        </div>
+        <div class="media">
+          <img src="https://serendibgroups.com/wp-content/uploads/2024/11/4-1-606x403.png" alt="Company overview image" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section>
+    <div class="container">
+      <div class="grid-2">
+        <div class="media">
+          <img src="https://serendibgroups.com/wp-content/uploads/2024/11/4-1-606x403.png" alt="Mission image" />
+        </div>
+        <div class="card">
+          <div class="title">Our <span class="hl">Mission</span></div>
+          <p>Serendib Green Plantation (Pvt) Ltd., a premier entity within the prestigious Serendib Group, is at the forefront of sustainable cultivation and green plantation practices. With a deep-rooted commitment to environmental stewardship and innovative agricultural techniques, we specialize in transforming land into flourishing, eco-friendly plantations. Our focus on sustainability not only enhances the health of our planet but also delivers superior quality products and services to our clients.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee: Investment Opportunities -->
+  <section class="marquee" aria-label="Investment opportunities marquee">
+    <div class="bar">
+      <div class="container">
+        <div class="track" aria-hidden="true">
+          <span class="chip">INVESTMENT OPPORTUNITIES</span>
+          <span class="chip">INVESTMENT OPPORTUNITIES</span>
+          <span class="chip">INVESTMENT OPPORTUNITIES</span>
+          <span class="chip">INVESTMENT OPPORTUNITIES</span>
+          <span class="chip">INVESTMENT OPPORTUNITIES</span>
+          <span class="chip">INVESTMENT OPPORTUNITIES</span>
+          <span class="chip">INVESTMENT OPPORTUNITIES</span>
+          <span class="chip">INVESTMENT OPPORTUNITIES</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects (content taken from provided source) -->
+  <section class="projects">
+    <div class="container">
+      <div class="title" style="margin-bottom:10px">Our <span class="hl">Projects</span></div>
+
+      <article class="project">
+        <div class="bg" style='background-image:url("https://serendibgroups.com/wp-content/uploads/2024/11/3-1.png")'></div>
+        <div class="content">
+          <h3>Vanilla</h3>
+          <p>Vanilla is a flavorful spice derived from the pods of the vanilla orchid (genus Vanilla), primarily Vanilla planifolia. It is native to Mexico but now grown in tropical regions worldwide. The pods are harvested, cured, and dried to produce vanilla beans, which are used to make vanilla extract, a common ingredient in baking, cooking, and perfumes. Vanilla has a rich, sweet, and aromatic</p>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="bg" style='background-image:url("https://serendibgroups.com/wp-content/uploads/2024/11/banana-scaled-1.jpg")'></div>
+        <div class="content">
+          <h3>Banana</h3>
+          <p>Bananas are a tropical fruit from the Musa genus, known for their elongated shape, soft texture, and sweet flavor. They have a thick peel that ranges from green when unripe to yellow when fully ripe. Bananas are rich in potassium, vitamins, and fiber, making them a popular and healthy snack.</p>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="bg" style='background-image:url("https://serendibgroups.com/wp-content/uploads/2024/11/DALL%C2%B7E-2024-10-25-14.29.43-A-vibrant-and-juicy-watermelon-sliced-open-to-reveal-its-bright-red-flesh-and-black-seeds-set-on-a-light-wooden-table-with-a-rustic-background.-The-w-1-e1746045831372.webp")'></div>
+        <div class="content">
+          <h3>Watermelon</h3>
+          <p>Watermelon is a refreshing, juicy fruit with a thick green rind and sweet, red or pink flesh filled with black seeds. It's known for its high water content, making it a hydrating snack, especially in hot weather.</p>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="bg" style='background-image:url("https://serendibgroups.com/wp-content/uploads/2024/11/gherkins-e1746045903545.jpg")'></div>
+        <div class="content">
+          <h3>Gherkins</h3>
+          <p>Gherkins are small, crisp cucumbers, typically harvested when immature and pickled in brine or vinegar. They are known for their tangy, slightly sweet flavor and crunchy texture.</p>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="bg" style='background-image:url("https://serendibgroups.com/wp-content/uploads/2025/04/6.png")'></div>
+        <div class="content">
+          <h3>Spices</h3>
+          <p>Sri Lankan spices are renowned for their rich, aromatic flavors and are a key element in the country’s vibrant cuisine. Commonly used spices include cinnamon, cardamom, cloves, black pepper, turmeric, nutmeg, and curry leaves.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Investment Opportunities -->
+  <section>
+    <div class="container">
+      <div class="card">
+        <div class="eyebrow">Investment Opportunities</div>
+        <div class="title">INVESTMENT OPPORTUNITIES</div>
+        <p>The area is used by Serendib Green Plantation, one of the leading regional plantation enterprises, to cultivate and produce gherkins, bananas, watermelons, and bird chilli. After our company was privatised in 2024, we proceeded to change it from a commodity-based enterprise to a more profitable, broad, and long-lasting company.</p>
+        <a class="btn primary" href="https://serendibgroups.com/investment-plan/">Investment Plan</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (content taken from provided source) -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img src="https://serendibgroups.com/wp-content/uploads/2024/10/serendiblogo-outline-2.png" alt="SerendibGroups" style="height:46px;width:auto" />
+          <p style="margin-top:12px"><strong>Serendib Green Plantation (Pvt) Ltd</strong>, a premier entity within the prestigious Serendib Group, is at the forefront of sustainable cultivation and green plantation practices.</p>
+        </div>
+        <div>
+          <p><strong>Company</strong></p>
+          <ul class="footer-links">
+            <li><a href="http://serendibgroups.com/">Home</a></li>
+            <li><a href="http://serendibgroups.com/about-us/">About Us</a></li>
+            <li><a href="http://serendibgroups.com/all-services/">Investment Plans</a></li>
+            <li><a href="http://serendibgroups.com/projects-default/">Carriers</a></li>
+            <li><a href="http://serendibgroups.com/blog/">News</a></li>
+            <li><a href="http://serendibgroups.com/contact/">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="map">
+            <iframe src="https://www.google.com/maps/d/u/7/embed?mid=1e77U-8IfdaBO_1mMcOh22Fcl-SGhTTQ&ehbc=2E312F" width="100%" height="320" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="SerendibGroups map"></iframe>
+          </div>
+          <p style="margin-top:12px"><strong>Hotline:</strong> 0112 863 703<br/><strong>Email:</strong> info@serendibgroups.com</p>
+        </div>
+      </div>
+      <div class="copy">
+        <div>Terms &amp; Conditions © Serendibgroups</div>
+        <div><a href="https://serendibgroups.com/home-1/" style="text-decoration:underline;color:#fff">serendibgroups.com</a></div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
