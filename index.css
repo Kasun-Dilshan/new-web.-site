@@ -1088,6 +1088,25 @@ footer {
     min-height: auto;
     padding: calc(var(--nav-h) + 1.5rem) 1rem 4rem;
   }
+  /* Mobile: center content + avoid overflow */
+  .hero-content,
+  #about .section-inner,
+  #presence .section-inner,
+  .team-impact,
+  .footer-inner,
+  .footer-bottom {
+    text-align: center;
+  }
+  .nav-logo {
+    min-width: 0;
+  }
+  .nav-logo span {
+    display: block;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    line-height: 1.15;
+    font-size: 0.95rem;
+  }
   .hero-content {
     padding-top: 0;
     padding-right: 0;
@@ -1102,6 +1121,7 @@ footer {
   }
   .hero-actions {
     width: 100%;
+    justify-content: center;
   }
   .hero-actions .btn-primary,
   .hero-actions .btn-ghost {
@@ -1150,6 +1170,9 @@ footer {
   .company-card p {
     font-size: 0.92rem;
   }
+  .card-stats {
+    justify-content: center;
+  }
   .companies-inner {
     gap: 1rem;
     padding: 0.8rem 1rem 1.4rem;
@@ -1169,10 +1192,24 @@ footer {
   .team-list {
     overflow-wrap: anywhere;
   }
+  .team-tags,
+  .team-badges {
+    justify-content: center;
+  }
+  .team-email {
+    margin-left: auto;
+    margin-right: auto;
+  }
   .team-impact-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .presence-list li {
     align-items: flex-start;
     line-height: 1.5;
+  }
+  .presence-list {
+    align-items: center;
+  }
+  .presence-list li {
+    justify-content: center;
   }
   .cta-actions .btn-primary,
   .cta-actions .btn-ghost {
@@ -1181,6 +1218,17 @@ footer {
   }
   .footer-links { grid-template-columns: repeat(2,1fr); }
   .footer-bottom { flex-direction: column; text-align: center; }
+  .footer-brand p {
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .footer-socials {
+    justify-content: center;
+  }
+  .footer-col ul {
+    align-items: center;
+  }
 }
 @media (max-width: 480px) {
   :root {
