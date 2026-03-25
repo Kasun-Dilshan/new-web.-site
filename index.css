@@ -1087,6 +1087,7 @@ footer {
   #hero {
     min-height: auto;
     padding: calc(var(--nav-h) + 1.5rem) 1rem 4rem;
+    align-items: flex-start;
   }
   /* Mobile: center content + avoid overflow */
   .hero-content,
@@ -1110,14 +1111,32 @@ footer {
   .hero-content {
     padding-top: 0;
     padding-right: 0;
+    max-width: 640px;
+  }
+  /* Make hero feel like a clean mobile "card" */
+  .hero-content::before {
+    content: '';
+    position: absolute;
+    inset: -18px -12px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 22px;
+    box-shadow: 0 18px 50px rgba(15, 23, 42, 0.10);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    z-index: -1;
   }
   .hero-title {
     font-size: clamp(2.4rem, 12vw, 3.8rem);
     line-height: 1.02;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
   }
   .hero-sub {
     max-width: 100%;
     font-size: 0.98rem;
+    margin-left: auto;
+    margin-right: auto;
   }
   .hero-actions {
     width: 100%;
@@ -1132,6 +1151,9 @@ footer {
     position: static;
     transform: none;
     margin-top: 1.6rem;
+  }
+  .scroll-hint span {
+    opacity: 0.75;
   }
   .nav-inner {
     gap: 0.8rem;
@@ -1160,16 +1182,38 @@ footer {
     right: auto;
     top: auto;
     transform: none;
-    width: min(78vw, 360px);
+    width: min(62vw, 260px);
     height: auto;
     max-width: none;
     max-height: none;
-    margin: 1.6rem auto 0;
+    margin: 0.25rem auto 1.15rem;
     animation: none;
   }
   .hero-logo-wrapper img {
     width: 100%;
     height: auto;
+  }
+  /* Put logo above the headline */
+  #hero {
+    flex-direction: column;
+  }
+  .hero-logo-wrapper {
+    order: 0;
+  }
+  .hero-content {
+    order: 1;
+  }
+  /* Cleaner CTA buttons on mobile */
+  .btn-primary,
+  .btn-ghost {
+    min-height: 48px;
+    border-radius: 16px;
+    padding: 0.9rem 1.25rem;
+    font-size: 1rem;
+  }
+  .btn-primary:hover,
+  .btn-ghost:hover {
+    transform: none;
   }
   #about,
   #companies,
@@ -1254,6 +1298,13 @@ footer {
   html {
     font-size: 15px;
   }
+  #hero {
+    padding: calc(var(--nav-h) + 1.15rem) 0.95rem 3.25rem;
+  }
+  .hero-content::before {
+    inset: -16px -10px;
+    border-radius: 20px;
+  }
   .nav-logo img {
     height: 32px;
   }
@@ -1265,6 +1316,12 @@ footer {
   }
   .hero-tag {
     letter-spacing: 0.18em;
+  }
+  .hero-actions {
+    gap: 0.75rem;
+  }
+  .hero-logo-wrapper {
+    width: min(64vw, 240px);
   }
   .company-card { flex: 0 0 280px; }
   .company-card {
