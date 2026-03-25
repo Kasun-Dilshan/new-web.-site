@@ -122,6 +122,21 @@
       align-items:center;
       gap:10px;
     }
+    .plan-link{
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+      padding:14px 10px;
+      border-radius:12px;
+      transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+    }
+    .plan-link:hover{
+      background: rgba(255,255,255,.70);
+      box-shadow: 0 14px 30px rgba(2,6,23,.08);
+      transform: translateY(-2px);
+    }
     .leaf{
       font-size:34px;
       line-height:1;
@@ -132,6 +147,11 @@
       color:#111827;
     }
     .plan a{
+      font-size:12px;
+      color:#94a3b8;
+      font-weight:800;
+    }
+    .plan-link span{
       font-size:12px;
       color:#94a3b8;
       font-weight:800;
@@ -210,24 +230,32 @@
 
       <div class="plans" aria-label="Investment plan links">
         <div class="plan">
-          <div class="leaf" style="color:#39b54a" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
-          <strong>High Profit Plan</strong>
-          <a href="investment-fixed-income.html">Click Here</a>
+          <a class="plan-link" href="investment-fixed-income.html" aria-label="Open High Profit Plan">
+            <div class="leaf" style="color:#39b54a" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
+            <strong>High Profit Plan</strong>
+            <span>Click Here</span>
+          </a>
         </div>
         <div class="plan">
-          <div class="leaf" style="color:#39b54a" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
-          <strong>Green Saving Plan</strong>
-          <a href="green-saving-plans.html">Click Here</a>
+          <a class="plan-link" href="green-saving-plans.html" aria-label="Open Green Saving Plan">
+            <div class="leaf" style="color:#39b54a" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
+            <strong>Green Saving Plan</strong>
+            <span>Click Here</span>
+          </a>
         </div>
         <div class="plan">
-          <div class="leaf" style="color:#6b7280" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
-          <strong>Silver Plan</strong>
-          <a href="green-silver-saving-plan.html">Click Here</a>
+          <a class="plan-link" href="green-silver-saving-plan.html" aria-label="Open Silver Plan">
+            <div class="leaf" style="color:#6b7280" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
+            <strong>Silver Plan</strong>
+            <span>Click Here</span>
+          </a>
         </div>
         <div class="plan">
-          <div class="leaf" style="color:#f59e0b" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
-          <strong>Gold Plan</strong>
-          <a href="gold-saving-plan.html">Click Here</a>
+          <a class="plan-link" href="gold-saving-plan.html" aria-label="Open Gold Plan">
+            <div class="leaf" style="color:#f59e0b" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
+            <strong>Gold Plan</strong>
+            <span>Click Here</span>
+          </a>
         </div>
       </div>
 
