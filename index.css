@@ -1042,12 +1042,11 @@ footer {
   overflow: hidden;
   background: #fff;
 }
-.footer-map #footer-locations-map {
+.footer-map iframe {
+  display: block;
   width: 100%;
   height: 180px;
-}
-.footer-map .leaflet-container {
-  font-family: var(--font-main);
+  border: 0;
 }
 .footer-bottom {
   max-width: 1300px;
@@ -1420,7 +1419,7 @@ footer {
     width: 18px;
   }
   .footer-links { grid-template-columns: 1fr; }
-  .footer-map #footer-locations-map {
+  .footer-map iframe {
     height: 210px;
   }
 }
