@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WELCOME TO Serendib Group of Companies</title>
   <meta name="description" content="Serendib Group of Companies is a global conglomerate spanning technology, energy, finance, healthcare, infrastructure, and media sectors." />
+  <meta name="theme-color" content="#0b1220" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="serendib_main_logo.png" />
   <link rel="stylesheet" href="index.css" />
 </head>
 <body>
@@ -40,7 +42,7 @@
       <h1 class="hero-title reveal-up">
         Sustainable<br>
         <span class="gradient-text">Cultivation</span><br>
-        Tommorow
+        Tomorrow
       </h1>
       <p class="hero-sub reveal-up">
 
@@ -51,7 +53,7 @@
         <a href="#about" class="btn-ghost">Learn More ↓</a>
       </div>
     </div>
-    <div class="hero-logo-wrapper"><img src="serendib_main_logo.png" alt="Serendib Group Logo"></div>
+    <div class="hero-logo-wrapper"><img src="serendib_main_logo.png" alt="Serendib Group Logo" fetchpriority="high" decoding="async"></div>
     <div class="scroll-hint">
       <span>Scroll to explore</span>
       <div class="scroll-line"></div>
@@ -69,8 +71,9 @@
         <p class="reveal-left">
           Serendib Green Plantation (Pvt) Ltd, a premier entity within the prestigious Serendib Group, is at the forefront of sustainable cultivation and green plantation practices.
 
-          With a deep-rooted commitment to environmental stewardship and innovative agricultural techniques, we specialize intransforming land into flourishing, eco-friendly plantations. Our focus on sustainability not only enhances the health of our planet but also deliverssuperior quality products and services to our clients.
-       
+          With a deep-rooted commitment to environmental stewardship and innovative agricultural techniques, we specialize in transforming land into flourishing, eco-friendly plantations. Our focus on sustainability not only enhances the health of our planet but also delivers superior quality products and services to our clients.
+        </p>
+
         <a href="#companies" class="btn-primary reveal-left" style="margin-top:2rem;display:inline-block;">Our Portfolio →</a>
       </div>
       <div class="stats-grid reveal-right">
@@ -102,7 +105,7 @@
 
         <article class="company-card" data-index="0" data-link="plantation.html" tabindex="0" role="link" aria-label="Open Serendib Green Plantation details">
           <div class="card-glow" style="--glow:#16a34a"></div>
-          <img class="card-photo" src="plantation.jpg" alt="Serendib Green Plantation">
+          <img class="card-photo" src="plantation.jpg" alt="Serendib Green Plantation" loading="lazy" decoding="async">
           <div class="card-tag">Agriculture</div>
           <h3>Serendib Green Plantation</h3>
           <p>Sustainable cultivation and export of premium Ceylon tea, rubber, and organic commodities.</p>
@@ -112,7 +115,7 @@
 
         <article class="company-card" data-index="1">
           <div class="card-glow" style="--glow:#10b981"></div>
-          <img class="card-photo" src="travel and tourse.jpg" alt="Serendib Travel and Tours">
+          <img class="card-photo" src="travel and tourse.jpg" alt="Serendib Travel and Tours" loading="lazy" decoding="async">
           <div class="card-tag">Tourism</div>
           <h3>Serendib Travel & Tours</h3>
           <p>Curated luxury travel experiences and premier destination management across Sri Lanka.</p>
@@ -142,7 +145,7 @@
 
         <article class="company-card" data-index="4">
           <div class="card-glow" style="--glow:#047857"></div>
-          <img class="card-photo" src="Builders.jpg" alt="Serendib Green Builders">
+          <img class="card-photo" src="Builders.jpg" alt="Serendib Green Builders" loading="lazy" decoding="async">
           <div class="card-tag">Construction</div>
           <h3>Serendib Green Builders</h3>
           <p>Pioneer constructors focusing on eco-friendly building practices and sustainable infrastructure.</p>
@@ -198,7 +201,7 @@
     <div class="team-inner">
       <article class="team-card reveal-up">
         <div class="team-avatar photo">
-          <img src="MERVYN.jpg" alt="Hons. Dr. Mervyn Rexter">
+          <img src="MERVYN.jpg" alt="Hons. Dr. Mervyn Rexter" loading="lazy" decoding="async">
         </div>
         <div class="team-meta">
           <h3>Hons.Dr.MERVYN REXTER</h3>
@@ -218,7 +221,7 @@
 
       <article class="team-card reveal-up">
         <div class="team-avatar photo">
-          <img src="Hashini.jpg" alt="Hashini Dilshani">
+          <img src="Hashini.jpg" alt="Hashini Dilshani" loading="lazy" decoding="async">
         </div>
         <div class="team-meta">
           <h3>HASHINI DILSHANI</h3>
@@ -238,7 +241,7 @@
 
       <article class="team-card reveal-up">
         <div class="team-avatar photo">
-          <img src="Shameen.jpg" alt="Shameen Chandrasekara">
+          <img src="Shameen.jpg" alt="Shameen Chandrasekara" loading="lazy" decoding="async">
         </div>
         <div class="team-meta">
           <h3>SHAMEEN CHANDRASEKARA</h3>
@@ -258,7 +261,7 @@
 
       <article class="team-card reveal-up">
         <div class="team-avatar photo">
-          <img src="thilan.jpg" alt="Thilan Kuruppuarachchi">
+          <img src="thilan.jpg" alt="Thilan Kuruppuarachchi" loading="lazy" decoding="async">
         </div>
         <div class="team-meta">
           <h3>THILAN KURUPPUARACHCHI</h3>
@@ -278,7 +281,7 @@
 
       <article class="team-card reveal-up">
         <div class="team-avatar photo">
-          <img src="anushka.png" alt="Anushka Jayashan">
+          <img src="anushka.png" alt="Anushka Jayashan" loading="lazy" decoding="async">
         </div>
         <div class="team-meta">
           <h3>ANUSHKA JAYASHAN</h3>
@@ -386,9 +389,9 @@
   </div>
 
   <!-- CDNs -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="main.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script defer src="main.js"></script>
 </body>
 </html>
