@@ -12,14 +12,17 @@
       --primary:#354E33;
       --secondary:#798D7A;
       --accent:#40B54C;
+      --accent-2:#8BEA6F;
       --card:#ffffff;
       --shadow: 0 10px 30px rgba(0,0,0,.08);
       --radius: 18px;
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+    html{scroll-behavior:smooth}
     a{color:inherit;text-decoration:none}
     .container{max-width:1200px;margin:0 auto;padding:0 16px}
+    :focus-visible{outline:3px solid rgba(64,181,76,.45);outline-offset:3px;border-radius:10px}
 
     /* Top bar */
     .topbar{background:var(--accent);color:#fff;font-size:14px}
@@ -34,6 +37,9 @@
     .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0}
     .brand{display:flex;align-items:center;gap:12px}
     .brand img{height:46px;width:auto}
+    .brand .wordmark{display:flex;flex-direction:column;line-height:1}
+    .brand .wordmark strong{font-size:14px;letter-spacing:.8px;text-transform:uppercase;color:var(--primary)}
+    .brand .wordmark span{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.2px}
     nav ul{list-style:none;margin:0;padding:0;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
     nav a{font-size:14px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;padding:10px 8px;border-radius:10px}
     nav a:hover{background:rgba(53,78,51,.08)}
@@ -41,6 +47,16 @@
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid rgba(53,78,51,.35);background:#fff;color:var(--primary);padding:10px 14px;border-radius:999px;font-weight:700;font-size:13px;text-transform:uppercase}
     .btn.primary{background:var(--primary);color:#fff;border-color:transparent}
     .btn.accent{background:var(--accent);color:#fff;border-color:transparent}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(0,0,0,.10)}
+    .btn{transition:transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease}
+
+    /* Mobile menu */
+    .menu{display:none}
+    .menu summary{list-style:none;cursor:pointer;border:1px solid rgba(53,78,51,.25);border-radius:12px;padding:10px 12px;background:#fff;font-weight:900;letter-spacing:.6px;text-transform:uppercase;font-size:12px;color:var(--primary)}
+    .menu summary::-webkit-details-marker{display:none}
+    .menu-panel{margin-top:10px;background:#fff;border:1px solid rgba(53,78,51,.14);border-radius:16px;box-shadow:var(--shadow);padding:10px}
+    .menu-panel a{display:block;padding:10px 10px;border-radius:12px;font-weight:800;text-transform:uppercase;letter-spacing:.3px;font-size:13px}
+    .menu-panel a:hover{background:rgba(53,78,51,.08)}
 
     /* Hero */
     .hero{
@@ -57,6 +73,23 @@
     .hero h1{margin:14px 0 6px;color:#fff;font-size:56px;line-height:1.05;letter-spacing:6px;text-transform:uppercase}
     .hero h2{margin:0;color:#fff;font-size:28px;letter-spacing:6px;text-transform:uppercase;font-weight:700;opacity:.95}
     .hero .actions{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    .hero .sub{margin-top:14px;max-width:720px;color:rgba(255,255,255,.85);font-weight:600;line-height:1.7}
+
+    .stats{
+      margin-top:20px;
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap:12px;
+    }
+    .stat{
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:16px;
+      padding:12px 12px;
+      backdrop-filter: blur(8px);
+    }
+    .stat strong{display:block;color:#fff;font-size:18px;letter-spacing:.4px}
+    .stat span{display:block;color:rgba(255,255,255,.78);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-top:4px}
 
     /* Sections */
     section{padding:52px 0}
@@ -77,6 +110,10 @@
     .marquee .track{display:flex;gap:22px;white-space:nowrap;animation: scroll 18s linear infinite;padding:14px 0}
     .marquee .chip{font-weight:900;text-transform:uppercase;letter-spacing:2px;color:var(--primary);font-size:20px}
     @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    @media (prefers-reduced-motion: reduce){
+      .marquee .track{animation:none}
+      .btn{transition:none}
+    }
 
     /* Projects */
     .projects{padding-top:20px}
@@ -99,6 +136,14 @@
     .project .content{position:relative;z-index:2;display:grid;grid-template-columns: 1fr 1fr;gap:18px;align-items:center;padding:42px 26px}
     .project h3{margin:0;font-size:44px;line-height:1.05}
     .project p{color:rgba(255,255,255,.82);margin:0}
+    .project .meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px}
+    .tag{display:inline-flex;align-items:center;gap:8px;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);font-weight:900;font-size:12px;letter-spacing:.6px;text-transform:uppercase}
+    .project .go{margin-left:auto}
+
+    /* Section polish */
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+    .section-head p{margin:0;max-width:720px}
+    .soft{background:rgba(53,78,51,.05);border-top:1px solid rgba(53,78,51,.08);border-bottom:1px solid rgba(53,78,51,.08)}
 
     /* Footer (from index.html layout) */
     #footer{
@@ -165,9 +210,18 @@
       .grid-2,.grid-2.reverse{grid-template-columns:1fr}
       .hero h1{font-size:42px;letter-spacing:5px}
       .hero h2{font-size:22px;letter-spacing:4px}
+      .stats{grid-template-columns:1fr 1fr}
       .project .content{grid-template-columns:1fr}
       #footer .footer-inner{grid-template-columns:1fr}
       #footer .footer-links{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 740px){
+      nav ul,.cta{display:none}
+      .menu{display:block}
+      .hero{min-height:64vh}
+      .title{font-size:34px}
+      .project h3{font-size:36px}
+      .topbar .items{gap:10px}
     }
   </style>
 </head>
@@ -197,23 +251,71 @@
 
   <!-- Header / Menu (content taken from provided source) -->
   <header>
-   
+    <div class="container">
+      <div class="nav" aria-label="Primary navigation">
+        <a class="brand" href="index.html" aria-label="Serendib Group home">
+          <img src="serendib_main_logo.png" alt="Serendib Group logo" />
+          <div class="wordmark">
+            <strong>Serendib</strong>
+            <span>Green Plantation</span>
+          </div>
+        </a>
+
+        <nav aria-label="Site">
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#invest">Invest</a></li>
+          </ul>
+        </nav>
+
+        <div class="cta">
+          <a class="btn" href="index.html">Group Home</a>
+          <a class="btn accent" href="https://serendibgroups.com/investment-plan/">Investment Plan</a>
+        </div>
+
+        <details class="menu">
+          <summary>Menu</summary>
+          <div class="menu-panel" role="navigation" aria-label="Mobile navigation">
+            <a href="#about">About</a>
+            <a href="#overview">Overview</a>
+            <a href="#mission">Mission</a>
+            <a href="#projects">Projects</a>
+            <a href="#invest">Investment</a>
+            <a href="index.html">Group Home</a>
+          </div>
+        </details>
+      </div>
+    </div>
   </header>
 
   <!-- Hero (content taken from provided source) -->
-  <section class="hero">
+  <section class="hero" id="hero">
     <div class="container">
       <div class="inner">
         <div class="kicker">Welcome to</div>
         <h1>Serendib</h1>
         <h2>Green Plantation</h2>
-      
+        <p class="sub">Sustainable cultivation, eco-friendly plantations, and premium produce—rooted in Sri Lanka’s agricultural heritage and built for a greener future.</p>
+        <div class="actions">
+          <a class="btn accent" href="#projects">Explore Projects</a>
+          <a class="btn primary" href="#invest">Investment Opportunities</a>
+          <a class="btn" href="https://serendibgroups.com/about-us-2/">About us</a>
+        </div>
+        <div class="stats" aria-label="Highlights">
+          <div class="stat"><strong>Sustainable</strong><span>Plantation Practices</span></div>
+          <div class="stat"><strong>Integrated</strong><span>Crops & Value Chain</span></div>
+          <div class="stat"><strong>Local</strong><span>Community Focus</span></div>
+          <div class="stat"><strong>Quality</strong><span>Export-ready Produce</span></div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Who We Are -->
-  <section>
+  <section id="about" class="soft">
     <div class="container">
       <div class="grid-2">
         <div class="media">
@@ -235,7 +337,7 @@
   </section>
 
   <!-- Company Overview -->
-  <section>
+  <section id="overview">
     <div class="container">
       <div class="grid-2 reverse">
         <div class="card">
@@ -251,7 +353,7 @@
   </section>
 
   <!-- Mission -->
-  <section>
+  <section id="mission" class="soft">
     <div class="container">
       <div class="grid-2">
         <div class="media">
@@ -284,54 +386,95 @@
   </section>
 
   <!-- Projects (content taken from provided source) -->
-  <section class="projects">
+  <section class="projects" id="projects">
     <div class="container">
-      <div class="title" style="margin-bottom:10px">Our <span class="hl">Projects</span></div>
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">What We Grow</div>
+          <div class="title" style="margin-bottom:0">Our <span class="hl">Projects</span></div>
+        </div>
+        <p>From specialty vanilla to staple fruits and Sri Lankan spices—our portfolio is built on sustainability, quality, and long-term value creation.</p>
+      </div>
 
       <article class="project">
         <div class="bg" style='background-image:url("https://serendibgroups.com/wp-content/uploads/2024/11/3-1.png")'></div>
         <div class="content">
-          <h3>Vanilla</h3>
-          <p>Vanilla is a flavorful spice derived from the pods of the vanilla orchid (genus Vanilla), primarily Vanilla planifolia. It is native to Mexico but now grown in tropical regions worldwide. The pods are harvested, cured, and dried to produce vanilla beans, which are used to make vanilla extract, a common ingredient in baking, cooking, and perfumes. Vanilla has a rich, sweet, and aromatic</p>
+          <div>
+            <h3>Vanilla</h3>
+            <p>Vanilla is a flavorful spice derived from the pods of the vanilla orchid (genus Vanilla), primarily Vanilla planifolia. It is native to Mexico but now grown in tropical regions worldwide. The pods are harvested, cured, and dried to produce vanilla beans, which are used to make vanilla extract, a common ingredient in baking, cooking, and perfumes.</p>
+            <div class="meta">
+              <span class="tag">Specialty crop</span>
+              <span class="tag">High value</span>
+              <a class="btn primary go" href="#invest">Invest</a>
+            </div>
+          </div>
         </div>
       </article>
 
       <article class="project">
         <div class="bg" style='background-image:url("https://serendibgroups.com/wp-content/uploads/2024/11/banana-scaled-1.jpg")'></div>
         <div class="content">
-          <h3>Banana</h3>
-          <p>Bananas are a tropical fruit from the Musa genus, known for their elongated shape, soft texture, and sweet flavor. They have a thick peel that ranges from green when unripe to yellow when fully ripe. Bananas are rich in potassium, vitamins, and fiber, making them a popular and healthy snack.</p>
+          <div>
+            <h3>Banana</h3>
+            <p>Bananas are a tropical fruit from the Musa genus, known for their elongated shape, soft texture, and sweet flavor. They have a thick peel that ranges from green when unripe to yellow when fully ripe. Bananas are rich in potassium, vitamins, and fiber.</p>
+            <div class="meta">
+              <span class="tag">Tropical fruit</span>
+              <span class="tag">Quality focused</span>
+              <a class="btn primary go" href="#invest">Invest</a>
+            </div>
+          </div>
         </div>
       </article>
 
       <article class="project">
         <div class="bg" style='background-image:url("https://serendibgroups.com/wp-content/uploads/2024/11/DALL%C2%B7E-2024-10-25-14.29.43-A-vibrant-and-juicy-watermelon-sliced-open-to-reveal-its-bright-red-flesh-and-black-seeds-set-on-a-light-wooden-table-with-a-rustic-background.-The-w-1-e1746045831372.webp")'></div>
         <div class="content">
-          <h3>Watermelon</h3>
-          <p>Watermelon is a refreshing, juicy fruit with a thick green rind and sweet, red or pink flesh filled with black seeds. It's known for its high water content, making it a hydrating snack, especially in hot weather.</p>
+          <div>
+            <h3>Watermelon</h3>
+            <p>Watermelon is a refreshing, juicy fruit with a thick green rind and sweet, red or pink flesh filled with black seeds. It's known for its high water content, making it a hydrating snack, especially in hot weather.</p>
+            <div class="meta">
+              <span class="tag">Seasonal</span>
+              <span class="tag">High yield</span>
+              <a class="btn primary go" href="#invest">Invest</a>
+            </div>
+          </div>
         </div>
       </article>
 
       <article class="project">
         <div class="bg" style='background-image:url("https://serendibgroups.com/wp-content/uploads/2024/11/gherkins-e1746045903545.jpg")'></div>
         <div class="content">
-          <h3>Gherkins</h3>
-          <p>Gherkins are small, crisp cucumbers, typically harvested when immature and pickled in brine or vinegar. They are known for their tangy, slightly sweet flavor and crunchy texture.</p>
+          <div>
+            <h3>Gherkins</h3>
+            <p>Gherkins are small, crisp cucumbers, typically harvested when immature and pickled in brine or vinegar. They are known for their tangy, slightly sweet flavor and crunchy texture.</p>
+            <div class="meta">
+              <span class="tag">Export ready</span>
+              <span class="tag">Processing</span>
+              <a class="btn primary go" href="#invest">Invest</a>
+            </div>
+          </div>
         </div>
       </article>
 
       <article class="project">
         <div class="bg" style='background-image:url("https://serendibgroups.com/wp-content/uploads/2025/04/6.png")'></div>
         <div class="content">
-          <h3>Spices</h3>
-          <p>Sri Lankan spices are renowned for their rich, aromatic flavors and are a key element in the country’s vibrant cuisine. Commonly used spices include cinnamon, cardamom, cloves, black pepper, turmeric, nutmeg, and curry leaves.</p>
+          <div>
+            <h3>Spices</h3>
+            <p>Sri Lankan spices are renowned for their rich, aromatic flavors and are a key element in the country’s vibrant cuisine. Commonly used spices include cinnamon, cardamom, cloves, black pepper, turmeric, nutmeg, and curry leaves.</p>
+            <div class="meta">
+              <span class="tag">Sri Lanka</span>
+              <span class="tag">Aromatic</span>
+              <a class="btn primary go" href="#invest">Invest</a>
+            </div>
+          </div>
         </div>
       </article>
     </div>
   </section>
 
   <!-- Investment Opportunities -->
-  <section>
+  <section id="invest">
     <div class="container">
       <div class="card">
         <div class="eyebrow">Investment Opportunities</div>
@@ -374,7 +517,7 @@
           <h5>Company</h5>
           <ul>
             <li><a href="#about">About Us</a></li>
-            <li><a href="#presence">Global Presence</a></li>
+            <li><a href="#overview">Company Overview</a></li>
             <li><a href="#">Investor Relations</a></li>
             <li><a href="#">Newsroom</a></li>
           </ul>
