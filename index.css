@@ -1153,7 +1153,24 @@ footer {
   }
   .nav-links.open { display: flex; }
   .hamburger { display: flex; }
-  .hero-logo-wrapper { display: none; }
+  .hero-logo-wrapper {
+    display: flex;
+    position: static;
+    inset: auto;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: min(78vw, 360px);
+    height: auto;
+    max-width: none;
+    max-height: none;
+    margin: 1.6rem auto 0;
+    animation: none;
+  }
+  .hero-logo-wrapper img {
+    width: 100%;
+    height: auto;
+  }
   #about,
   #companies,
   #team,
