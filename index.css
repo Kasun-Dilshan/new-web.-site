@@ -1151,6 +1151,9 @@ footer {
     position: static;
     transform: none;
     margin-top: 1.6rem;
+    width: 100%;
+    align-items: flex-end;
+    text-align: right;
   }
   .scroll-hint span {
     opacity: 0.75;
