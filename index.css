@@ -452,6 +452,30 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
   transform-style: preserve-3d;
 }
+.company-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(900px 420px at 15% 15%, rgba(34,197,94,0.18), transparent 55%),
+    linear-gradient(180deg, rgba(2, 6, 23, 0.12) 0%, rgba(2, 6, 23, 0.62) 68%, rgba(2, 6, 23, 0.74) 100%);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.company-card:has(.card-photo)::before {
+  opacity: 1;
+}
+.company-card > * {
+  position: relative;
+  z-index: 2;
+}
+.company-card > .card-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
 .company-card:hover {
   transform: translateY(-10px) rotateX(3deg) rotateY(-3deg) scale(1.02);
   border-color: var(--border-hover);
@@ -480,12 +504,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .company-card:hover .card-icon { transform: scale(1.15) rotate(-5deg); }
 .card-photo {
   width: 100%;
-  height: 170px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 14px;
-  margin-bottom: 1rem;
-  border: 1px solid var(--border);
+  border-radius: 0;
+  margin-bottom: 0;
+  border: none;
   display: block;
+  filter: saturate(1.08) contrast(1.03);
+  transform: scale(1.02);
+  transition: transform 0.9s ease, filter 0.9s ease;
+}
+.company-card:hover .card-photo {
+  transform: scale(1.08);
+  filter: saturate(1.15) contrast(1.05);
 }
 .card-tag {
   display: inline-block;
@@ -493,7 +524,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--text-3);
+  color: rgba(255,255,255,0.86);
   margin-bottom: 0.75rem;
 }
 .company-card h3 {
@@ -501,12 +532,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 800;
   margin-bottom: 0.85rem;
   letter-spacing: -0.02em;
+  color: #fff;
+  text-shadow: 0 10px 24px rgba(0,0,0,0.32);
 }
 .company-card p {
-  color: var(--text-2);
+  color: rgba(255,255,255,0.86);
   font-size: 0.95rem;
   line-height: 1.65;
   margin-bottom: 1.5rem;
+  text-shadow: 0 10px 22px rgba(0,0,0,0.26);
 }
 .card-stats {
   display: flex;
@@ -516,15 +550,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .card-stats span {
   font-size: 0.78rem;
-  color: var(--text-3);
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--border);
+  color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.18);
   padding: 0.25rem 0.75rem;
   border-radius: 50px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 .card-arrow {
   font-size: 1.2rem;
-  color: var(--accent-1);
+  color: #fff;
   opacity: 0;
   transform: translateX(-8px);
   transition: opacity 0.3s, transform 0.3s;
