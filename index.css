@@ -626,15 +626,64 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   gap: 1.2rem;
 }
 .team-card {
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 0;
+  position: relative;
+  border-radius: 22px;
+  padding: 1.05rem;
   display: grid;
   grid-template-columns: 300px minmax(0, 1fr);
   align-items: start;
   gap: 1.4rem;
   perspective: 1200px;
+  background:
+    radial-gradient(1200px 520px at 15% 0%, rgba(34, 197, 94, 0.16), transparent 55%),
+    radial-gradient(900px 420px at 100% 100%, rgba(16, 185, 129, 0.14), transparent 55%),
+    rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 18px 55px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  overflow: hidden;
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+.team-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(22, 163, 74, 0.55), rgba(16, 185, 129, 0.25), rgba(5, 150, 105, 0.45));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.55;
+  transition: opacity var(--transition);
+}
+.team-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(700px 260px at 25% 20%, rgba(255, 255, 255, 0.55), transparent 60%),
+    radial-gradient(520px 220px at 75% 75%, rgba(34, 197, 94, 0.10), transparent 60%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+.team-card > * {
+  position: relative;
+  z-index: 1;
+}
+.team-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(22, 163, 74, 0.28);
+  box-shadow: 0 26px 70px rgba(15, 23, 42, 0.12), 0 0 45px rgba(22, 163, 74, 0.12);
+}
+.team-card:hover::before {
+  opacity: 0.9;
+}
+.team-card:focus-within {
+  border-color: rgba(22, 163, 74, 0.35);
+  box-shadow: 0 26px 70px rgba(15, 23, 42, 0.12), 0 0 0 4px rgba(22, 163, 74, 0.14);
 }
 .team-avatar.photo {
   width: 100%;
@@ -666,11 +715,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: transform 0.65s ease;
 }
 .team-meta {
-  background: linear-gradient(180deg, #ffffff 0%, #f7fcf9 100%);
-  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(247,252,249,0.88) 100%);
+  border: 1px solid rgba(15, 23, 42, 0.06);
   border-radius: 18px;
-  padding: 1.35rem 1.4rem;
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.06);
+  padding: 1.35rem 1.45rem 1.25rem;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.05);
   transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition), background 0.25s;
   position: relative;
   overflow: hidden;
@@ -678,21 +727,21 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .team-meta::before {
   content: '';
   position: absolute;
-  inset: 0 auto auto 0;
-  width: 100%;
-  height: 4px;
-  background: var(--grad-a);
-  opacity: 0.95;
+  inset: 12px 12px auto 12px;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(22, 163, 74, 0.95), rgba(16, 185, 129, 0.55), rgba(5, 150, 105, 0.85));
+  opacity: 0.9;
 }
 .team-card:hover .team-meta {
-  transform: translateY(-4px) rotateX(0.2deg);
-  border-color: var(--border-hover);
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
-  background: #fcfefd;
+  transform: translateY(-2px);
+  border-color: rgba(22, 163, 74, 0.22);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.10);
+  background: rgba(255, 255, 255, 0.96);
 }
 .team-card:hover .team-avatar.photo {
-  transform: translateY(-4px) rotateY(-1deg);
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.14);
+  transform: translateY(-2px);
+  box-shadow: 0 22px 48px rgba(15, 23, 42, 0.14);
 }
 .team-card:hover .team-avatar.photo::after {
   opacity: 0.45;
@@ -746,9 +795,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: inline-flex;
   align-items: center;
   padding: 0.4rem 0.66rem;
-  border: 1px solid rgba(15, 23, 42, 0.09);
+  border: 1px solid rgba(15, 23, 42, 0.08);
   border-radius: 999px;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.92);
   font-size: 0.82rem;
   color: var(--text-2);
   line-height: 1.25;
@@ -776,6 +825,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-radius: 999px;
   border: 1px solid rgba(22, 163, 74, 0.22);
   background: rgba(22, 163, 74, 0.08);
+  transition: transform 0.2s ease, filter 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+.team-email:hover {
+  transform: translateY(-1px);
+  border-color: rgba(22, 163, 74, 0.35);
+  background: rgba(22, 163, 74, 0.12);
+  filter: brightness(1.05);
 }
 .team-email::before {
   content: '✉';
@@ -1075,7 +1131,7 @@ footer {
   }
   #about .section-inner { grid-template-columns: 1fr; gap: 3rem; }
   .stats-grid { grid-template-columns: repeat(4,1fr); }
-  .team-card { grid-template-columns: 220px minmax(0, 1fr); }
+  .team-card { grid-template-columns: 220px minmax(0, 1fr); padding: 0.95rem; }
   #presence .section-inner { grid-template-columns: 1fr; gap: 3rem; }
   .footer-inner { grid-template-columns: 1fr; gap: 3rem; }
   .hero-title {
@@ -1251,7 +1307,8 @@ footer {
   .team-inner { grid-template-columns: 1fr; }
   .team-card {
     grid-template-columns: 1fr;
-    padding: 1rem;
+    padding: 0.95rem;
+    border-radius: 20px;
   }
   .team-avatar.photo {
     width: 100%;
