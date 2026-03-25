@@ -481,3 +481,43 @@ ScrollTrigger.config({ ignoreMobileResize: true });
     }
   });
 })();
+
+/* ============================================================
+   11. FOOTER LOCATIONS MAP — Sri Lanka branches (Leaflet / OSM)
+   ============================================================ */
+(function initFooterLocationsMap() {
+  const el = document.getElementById('footer-locations-map');
+  if (!el || typeof L === 'undefined') return;
+
+  const locations = [
+    { name: 'Battaramulla Branch', lat: 6.92578, lng: 79.84997 },
+    { name: 'Kandy Branch', lat: 7.28392, lng: 80.62322 },
+    { name: 'Anuradhapura Branch', lat: 8.04822, lng: 80.96552 },
+    { name: 'Hambantota Branch', lat: 6.12391, lng: 81.02551 },
+  ];
+
+  const map = L.map(el, {
+    zoomControl: true,
+    scrollWheelZoom: false,
+    dragging: true,
+    tap: true,
+  });
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap contributors',
+  }).addTo(map);
+
+  const bounds = L.latLngBounds([]);
+  locations.forEach(loc => {
+    const marker = L.marker([loc.lat, loc.lng]).addTo(map);
+    marker.bindPopup(`<strong>${loc.name}</strong>`);
+    bounds.extend([loc.lat, loc.lng]);
+  });
+
+  if (bounds.isValid()) {
+    map.fitBounds(bounds, { padding: [14, 14] });
+  } else {
+    map.setView([7.8731, 80.7718], 7); // Sri Lanka fallback
+  }
+})();
