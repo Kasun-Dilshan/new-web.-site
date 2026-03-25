@@ -100,20 +100,74 @@
     .project h3{margin:0;font-size:44px;line-height:1.05}
     .project p{color:rgba(255,255,255,.82);margin:0}
 
-    /* Footer */
-    footer{padding:40px 0 20px;background:var(--accent);color:#fff;margin-top:30px}
-    .footer-grid{display:grid;grid-template-columns: 1.15fr .85fr 1fr;gap:18px;align-items:start}
-    .footer-grid p{color:rgba(255,255,255,.9)}
-    .footer-links{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-    .map{border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.15)}
-    .copy{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.25);font-weight:600;font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+    /* Footer (from index.html layout) */
+    #footer{
+      padding:48px 0 18px;
+      background: linear-gradient(180deg, rgba(53,78,51,1) 0%, rgba(35,60,35,1) 100%);
+      color:#fff;
+      margin-top:30px;
+    }
+    #footer .footer-inner{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 16px;
+      display:grid;
+      grid-template-columns: 1fr 2.2fr;
+      gap:24px;
+      align-items:start;
+    }
+    #footer .footer-brand p{color:rgba(255,255,255,.85);line-height:1.7;margin:12px 0 0}
+    #footer .footer-socials{display:flex;gap:10px;margin-top:14px}
+    #footer .footer-socials a{
+      width:36px;height:36px;border-radius:10px;
+      display:inline-flex;align-items:center;justify-content:center;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.18);
+      font-weight:800;
+    }
+    #footer .footer-socials a:hover{background:rgba(255,255,255,.18)}
+
+    #footer .footer-links{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap:18px;
+    }
+    #footer .footer-col h5{margin:0 0 10px;font-size:14px;letter-spacing:.6px;text-transform:uppercase}
+    #footer .footer-col p{margin:0 0 12px;color:rgba(255,255,255,.85);line-height:1.6;font-size:14px}
+    #footer .footer-col ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+    #footer .footer-col a{color:rgba(255,255,255,.88);font-size:14px}
+    #footer .footer-col a:hover{color:#fff;text-decoration:underline}
+
+    #footer .footer-map iframe{
+      width:100%;
+      height:220px;
+      border:0;
+      border-radius:16px;
+      box-shadow:0 10px 30px rgba(0,0,0,.18);
+    }
+
+    #footer .footer-bottom{
+      max-width:1200px;
+      margin:22px auto 0;
+      padding:14px 16px 0;
+      border-top:1px solid rgba(255,255,255,.18);
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      color:rgba(255,255,255,.82);
+      font-size:13px;
+      font-weight:600;
+    }
+    #footer .footer-bottom a{color:rgba(255,255,255,.9);text-decoration:underline}
 
     @media (max-width: 980px){
       .grid-2,.grid-2.reverse{grid-template-columns:1fr}
       .hero h1{font-size:42px;letter-spacing:5px}
       .hero h2{font-size:22px;letter-spacing:4px}
       .project .content{grid-template-columns:1fr}
-      .footer-grid{grid-template-columns:1fr}
+      #footer .footer-inner{grid-template-columns:1fr}
+      #footer .footer-links{grid-template-columns:1fr 1fr}
     }
   </style>
 </head>
@@ -305,36 +359,70 @@
     </div>
   </section>
 
-  <!-- Footer (content taken from provided source) -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <img src="https://serendibgroups.com/wp-content/uploads/2024/10/serendiblogo-outline-2.png" alt="SerendibGroups" style="height:46px;width:auto" />
-          <p style="margin-top:12px"><strong>Serendib Green Plantation (Pvt) Ltd</strong>, a premier entity within the prestigious Serendib Group, is at the forefront of sustainable cultivation and green plantation practices.</p>
+  <!-- Footer (copied from index.html) -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo">
+          <img src="serendib_main_logo.png" alt="Serendib Group" style="height: 44px; width: auto; object-fit: contain;">
+        </a>
+        <p>Building tomorrow's world, today.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="#" aria-label="YouTube">▶</a>
         </div>
-        <div>
-          <p><strong>Company</strong></p>
-          <ul class="footer-links">
-            <li><a href="http://serendibgroups.com/">Home</a></li>
-            <li><a href="http://serendibgroups.com/about-us/">About Us</a></li>
-            <li><a href="http://serendibgroups.com/all-services/">Investment Plans</a></li>
-            <li><a href="http://serendibgroups.com/projects-default/">Carriers</a></li>
-            <li><a href="http://serendibgroups.com/blog/">News</a></li>
-            <li><a href="http://serendibgroups.com/contact/">Contact Us</a></li>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Companies</h5>
+          <ul>
+            <li><a href="#">Serendib Green Plantation</a></li>
+            <li><a href="#">Serendib Travel & Tours</a></li>
+            <li><a href="#">Serendib Auto Trading</a></li>
+            <li><a href="#">Serendib Investment & Dev</a></li>
+            <li><a href="#">Serendib Green Builders</a></li>
+            <li><a href="#">Serendib Micro Finance</a></li>
+            <li><a href="#">Diwya Spices</a></li>
+          </ul>
+
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#presence">Global Presence</a></li>
+            <li><a href="#">Investor Relations</a></li>
+            <li><a href="#">Newsroom</a></li>
           </ul>
         </div>
-        <div>
-          <div class="map">
-            <iframe src="https://www.google.com/maps/d/u/7/embed?mid=1e77U-8IfdaBO_1mMcOh22Fcl-SGhTTQ&ehbc=2E312F" width="100%" height="320" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="SerendibGroups map"></iframe>
+        <div class="footer-col">
+          <h5>Join Us</h5>
+          <ul>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Serendib Academy</a></li>
+            <li><a href="#">Internships</a></li>
+            <li><a href="#">Partnerships</a></li>
+          </ul>
+        </div>
+        <div class="footer-col footer-map-col">
+          <h5>Our Locations</h5>
+          <p>Head Office and company network across Sri Lanka.</p>
+          <div class="footer-map">
+            <iframe
+              title="Serendib Group Locations Map"
+              src="https://www.google.com/maps?q=Colombo,Sri+Lanka&z=7&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen>
+            </iframe>
           </div>
-          <p style="margin-top:12px"><strong>Hotline:</strong> 0112 863 703<br/><strong>Email:</strong> info@serendibgroups.com</p>
         </div>
       </div>
-      <div class="copy">
-        <div>Terms &amp; Conditions © Serendibgroups</div>
-        <div><a href="https://serendibgroups.com/home-1/" style="text-decoration:underline;color:#fff">serendibgroups.com</a></div>
-      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Serendib Group of Companies. All rights reserved.</span>
+      <span><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Cookies</a></span>
     </div>
   </footer>
 </body>
