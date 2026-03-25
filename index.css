@@ -1152,11 +1152,19 @@ footer {
     transform: none;
     margin-top: 1.6rem;
     width: 100%;
-    align-items: flex-end;
-    text-align: right;
+    align-items: center;
+    text-align: center;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    gap: 0.35rem;
+    margin-bottom: 0.6rem;
   }
   .scroll-hint span {
     opacity: 0.75;
+  }
+  .scroll-line {
+    height: 26px;
+    opacity: 0.55;
   }
   .nav-inner {
     gap: 0.8rem;
@@ -1203,9 +1211,8 @@ footer {
   .hero-logo-wrapper {
     order: 0;
   }
-  .hero-content {
-    order: 1;
-  }
+  .scroll-hint { order: 1; }
+  .hero-content { order: 2; }
   /* Cleaner CTA buttons on mobile */
   .btn-primary,
   .btn-ghost {
